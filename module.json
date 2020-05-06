@@ -1,0 +1,13 @@
+{
+	"servers": [
+		"https://raw.githubusercontent.com/Arno736/SimpleGuardian/master/"
+	],
+	"disableAutoUpdate": false,"name": "SimpleGuardian",
+	"author": "Arno736",
+	"description": "Show number of guardian chest and desactivate optimisation",
+	"version": "1.0",
+	"options": {
+		"niceName": "SimpleGuardian",
+		"guiName": "SimpleGuardian"
+	}
+}
