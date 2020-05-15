@@ -5,7 +5,7 @@
 	"disableAutoUpdate": false,"name": "SimpleGuardian",
 	"author": "Arno736",
 	"description": "Show number of guardian chest and desactivate optimisation",
-	"version": "1.0",
+	"version": "1.5",
 	"options": {
 		"niceName": "SimpleGuardian",
 		"guiName": "SimpleGuardian"
