@@ -1,39 +1,46 @@
 module.exports = function simple_guardian(mod)
 {
-	let active = true;
 	let command = mod.command;
 	let cleared;
 
-	mod.hook('S_FIELD_EVENT_ON_ENTER', 'raw', () => {  
-		if (active)
+	mod.hook('S_FIELD_EVENT_ON_ENTER', 'raw', () => {
+		if (mod.settings.disableOptimisation)
 			return false;
 	});
 
 	mod.hook('S_FIELD_POINT_INFO', 2, (event) => {
 		if (cleared != event.cleared) {
 			cleared = event.cleared;
-
+			
 			if (event.cleared != "0")
 				command.message("Chest : " + event.cleared + " /  40");
 
 			if (event.cleared == "40") {
-				mod.toClient('S_CHAT', 3, {
-					channel: 21,
-					gm: 1,
-					name: 'SimpleGuardian',
-					message: String("Guardians Chest Full !")
+				if (mod.settings.notifyChestFull) {
+					mod.toClient('S_CHAT', 3, {
+						channel: 21,
+						name: 'SimpleGuardian',
+						message: String("Guardians Chest Full !")
 					});
+				}
+				else {
+					command.message("Guardians Chest Full !");
+				}
 			}
 		}
 	});
 
 	mod.command.add(['sg', 'simpleguardian'], (y) =>{
 		if (!y) {
-			active = !active;
-			command.message("Disable Guardians Optimisation : " + active.toString());
+			mod.settings.disableOptimisation = !mod.settings.disableOptimisation;
+			command.message("Disable Guardians Optimisation : " + mod.settings.disableOptimisation);
 		}
 		else {
 			switch (y) {
+				case "optimisation":
+					mod.settings.disableOptimisation = !mod.settings.disableOptimisation;
+					command.message("Disable Guardians Optimisation : " + mod.settings.disableOptimisation);
+					break;
 				case "status":
 					command.message("Chest : " + cleared + " /  40");
 					break;

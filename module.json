@@ -5,9 +5,12 @@
 	"name": "SimpleGuardian",
 	"author": "Arno736",
 	"description": "Show number of guardian chest and desactivate optimisation",
-	"version": "1.7",
+	"version": "1.8",
 	"options": {
 		"niceName": "SimpleGuardian",
-		"guiName": "SimpleGuardian"
+		"guiName": "SimpleGuardian",
+		"settingsFile": "settings.json",
+		"settingsMigrator": "settings_migrator.js",
+		"settingsVersion": 1
 	}
 }
