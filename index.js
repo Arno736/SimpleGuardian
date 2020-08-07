@@ -1,13 +1,10 @@
-module.exports = function simple_guardian(mod)
+module.exports = function SimpleGuardian(mod)
 {
 	let command = mod.command;
 	let cleared;
-
 	mod.hook('S_FIELD_EVENT_ON_ENTER', 'raw', () => {
-		if (mod.settings.disableOptimisation)
-			return false;
+		if (mod.settings.disableOptimisation) return false;
 	});
-
 	mod.hook('S_FIELD_POINT_INFO', 2, (event) => {
 		if (cleared != event.cleared) {
 			cleared = event.cleared;
@@ -31,22 +28,19 @@ module.exports = function simple_guardian(mod)
 	});
 
 	mod.command.add(['sg', 'simpleguardian'], (y) =>{
-		if (!y) {
-			mod.settings.disableOptimisation = !mod.settings.disableOptimisation;
-			command.message("Disable Guardians Optimisation : " + mod.settings.disableOptimisation);
+		switch (y) {
+			case "optimisation":
+				mod.settings.disableOptimisation = !mod.settings.disableOptimisation;
+				command.message("Disable Guardians Optimisation : " + mod.settings.disableOptimisation);
+				break;
+			case "status":
+				command.message("Chest : " + cleared + " /  40");
+				break;
+			default:
+				command.message("Simple Guardian Help :");
+				command.message("sg optimisation | Toggle Guardians Optimisation");
+				command.message("sg status | Get player number of cleared chests");
+				break;
 		}
-		else {
-			switch (y) {
-				case "optimisation":
-					mod.settings.disableOptimisation = !mod.settings.disableOptimisation;
-					command.message("Disable Guardians Optimisation : " + mod.settings.disableOptimisation);
-					break;
-				case "status":
-					command.message("Chest : " + cleared + " /  40");
-					break;
-				default:
-					break;
-			}
-		}
-    });
+	});
 }

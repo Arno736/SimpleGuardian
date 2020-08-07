@@ -9,6 +9,6 @@
 
 Command | Description
 --- | ---
-sg | Toggle Guardians Optimisation
+sg | Show help 
 sg optimisation | Toggle Guardians Optimisation
 sg status | Message player number of cleared chests
