@@ -1,10 +1,10 @@
 {
 	"servers": ["https://raw.githubusercontent.com/Arno736/SimpleGuardian/master/"],
-	"supportUrl": ["https://github.com/Arno736/SimpleGuardian/issues"],
+	"supportUrl": "https://github.com/Arno736/SimpleGuardian/issues",
 	"name": "SimpleGuardian",
 	"author": "Arno736",
 	"description": "Show number of guardian chest and desactivate optimisation",
-	"version": "1.85",
+	"version": "1.86",
 	"options": {
 		"niceName": "SimpleGuardian",
 		"guiName": "SimpleGuardian",
